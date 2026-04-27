@@ -32,12 +32,13 @@ jobs:
         run: mise config ls
 
       - name: Validate Cargo.toml syntax
-        run: python3 -c "
+        run: |
+          python3 -c "
           import tomllib
           with open('wsl/cargo/Cargo.toml', 'rb') as f:
               tomllib.load(f)
           print('Cargo.toml is valid')
-        "
+          "
 
   validate-shell:
     name: Validate shell scripts
