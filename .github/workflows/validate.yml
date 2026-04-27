@@ -1,0 +1,49 @@
+name: Validate dotfiles
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+jobs:
+  validate-json:
+    name: Validate JSON files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate winget-packages.json
+        run: python3 -c "import json; json.load(open('windows/winget-packages.json'))"
+
+      - name: Validate renovate.json
+        run: python3 -c "import json; json.load(open('.github/renovate.json'))"
+
+  validate-toml:
+    name: Validate TOML files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mise
+        uses: jdx/mise-action@v2
+
+      - name: Validate mise config
+        run: mise config ls
+
+      - name: Validate Cargo.toml syntax
+        run: python3 -c "
+          import tomllib
+          with open('wsl/cargo/Cargo.toml', 'rb') as f:
+              tomllib.load(f)
+          print('Cargo.toml is valid')
+        "
+
+  validate-shell:
+    name: Validate shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check install.sh syntax
+        run: bash -n install.sh

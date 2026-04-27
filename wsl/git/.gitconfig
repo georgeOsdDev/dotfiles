@@ -1,0 +1,13 @@
+# Git configuration
+# Managed by dotfiles - https://github.com/georgeOsdDev/dotfiles
+# NOTE: Credentials should be configured in ~/.gitconfig.local (not committed)
+
+[user]
+	name = georgeOsdDev
+
+[core]
+	longpaths = true
+
+# Include local overrides (email, credentials, machine-specific settings)
+[include]
+	path = ~/.gitconfig.local

@@ -1,0 +1,13 @@
+[package]
+name = "dotfiles-cargo-tools"
+version = "0.1.0"
+description = "Cargo CLI tools managed by dotfiles"
+publish = false
+
+[dependencies]
+bat = "=0.26.1"
+cargo-binstall = "=1.16.6"
+eza = "=0.23.4"
+fd-find = "=10.3.0"
+ripgrep = "=15.1.0"
+starship = "=1.24.1"

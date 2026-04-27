@@ -1,0 +1,7 @@
+{
+  "name": "dotfiles-npm-global",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Global npm packages managed by dotfiles",
+  "dependencies": {}
+}
