@@ -12,6 +12,7 @@ Cross-platform dotfiles for Windows (winget) and WSL (mise, cargo, npm) environm
 | **npm** (WSL) | `wsl/npm/package.json` | Renovate (npm manager) |
 | **PowerShell** | `windows/PowerShell/Microsoft.PowerShell_profile.ps1` | Manual |
 | **bash** | `wsl/shell/.bashrc`, `wsl/shell/.profile` | Manual |
+| **zsh + zim** | `wsl/shell/.zshrc`, `wsl/shell/.zimrc`, `wsl/shell/.zshenv` | Manual |
 | **git** | `wsl/git/.gitconfig` | Manual |
 
 ## Quick Start

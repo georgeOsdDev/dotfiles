@@ -13,8 +13,9 @@ This is a cross-platform dotfiles repository managing software packages and conf
 ### File Structure
 - `windows/` — Windows-specific configs (winget, PowerShell)
 - `wsl/` — WSL-specific configs (mise, cargo, npm, shell, git)
+  - `wsl/shell/` — bash (.bashrc, .profile) and zsh + zim (.zshrc, .zimrc, .zshenv)
 - `.github/` — Renovate config and CI workflows
-- `install.sh` — WSL bootstrap script
+- `install.sh` — WSL bootstrap script (installs zsh, links configs, sets up tools)
 - `install.ps1` — Windows bootstrap script
 
 ### Security Rules

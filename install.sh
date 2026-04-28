@@ -15,6 +15,32 @@ echo ">>> Linking shell configs..."
 ln -sf "$DOTFILES_DIR/wsl/shell/.bashrc" ~/.bashrc
 ln -sf "$DOTFILES_DIR/wsl/shell/.profile" ~/.profile
 
+# --- zsh / zim ---
+echo ""
+echo ">>> Setting up zsh + zim..."
+if ! command -v zsh &>/dev/null; then
+    echo "Installing zsh..."
+    sudo apt-get update && sudo apt-get install -y zsh
+fi
+
+ln -sf "$DOTFILES_DIR/wsl/shell/.zshrc" ~/.zshrc
+ln -sf "$DOTFILES_DIR/wsl/shell/.zimrc" ~/.zimrc
+ln -sf "$DOTFILES_DIR/wsl/shell/.zshenv" ~/.zshenv
+
+# Install zim modules (zim itself is bootstrapped from .zshrc on first launch)
+if [ -d ~/.zim ]; then
+    echo "  Updating zim modules..."
+    zsh -c 'source ~/.zim/zimfw.zsh && zimfw install' 2>/dev/null || true
+else
+    echo "  Zim will auto-install on first zsh launch."
+fi
+
+# Set zsh as default shell if not already
+if [ "$(basename "$SHELL")" != "zsh" ]; then
+    echo "  Setting zsh as default shell..."
+    chsh -s "$(command -v zsh)" || echo "  WARN: Could not change default shell. Run: chsh -s \$(which zsh)"
+fi
+
 # --- git config ---
 echo ""
 echo ">>> Linking git config..."
