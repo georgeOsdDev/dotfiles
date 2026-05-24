@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Install mise
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v4
 
       - name: Validate mise config
         run: mise config ls
