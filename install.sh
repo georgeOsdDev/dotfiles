@@ -5,6 +5,7 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FAILED=()
+MISE_VERSION="2026.5.15"
 
 echo "=== dotfiles WSL bootstrap ==="
 echo "Dotfiles directory: $DOTFILES_DIR"
@@ -57,9 +58,13 @@ fi
 # --- mise ---
 echo ""
 echo ">>> Setting up mise..."
-if ! command -v mise &>/dev/null && [ ! -f "$HOME/.local/bin/mise" ]; then
-    echo "Installing mise..."
-    curl https://mise.run | sh
+CURRENT_MISE_VERSION=""
+if command -v mise &>/dev/null || [ -f "$HOME/.local/bin/mise" ]; then
+    CURRENT_MISE_VERSION="$("$HOME/.local/bin/mise" --version 2>/dev/null | head -1 | awk '{print $1}')" || true
+fi
+if [ "$CURRENT_MISE_VERSION" != "$MISE_VERSION" ]; then
+    echo "Installing mise $MISE_VERSION (current: ${CURRENT_MISE_VERSION:-none})..."
+    MISE_VERSION="v$MISE_VERSION" curl https://mise.run | sh
 fi
 
 # Activate mise in current shell

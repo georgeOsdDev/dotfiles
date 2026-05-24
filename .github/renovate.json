@@ -24,6 +24,17 @@
       "groupName": "cargo tools"
     }
   ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update mise version in install.sh",
+      "fileMatch": ["^install\\.sh$"],
+      "matchStrings": ["MISE_VERSION=\"(?<currentValue>[^\"]+)\""],
+      "depNameTemplate": "jdx/mise",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.+)$"
+    }
+  ],
   "mise": {
     "enabled": true,
     "fileMatch": ["wsl/mise/config\\.toml$"]
