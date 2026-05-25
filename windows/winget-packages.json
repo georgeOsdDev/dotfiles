@@ -1,23 +1,65 @@
 {
   "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-  "CreationDate": "2026-05-25T00:00:00.000-00:00",
+  "CreationDate": "2026-05-25T00:47:19.000-00:00",
   "Sources": [
     {
       "Packages": [
-        { "PackageIdentifier": "Git.Git", "Version": "2.53.0" },
-        { "PackageIdentifier": "OpenJS.NodeJS.LTS", "Version": "24.13.1" },
-        { "PackageIdentifier": "Microsoft.PowerShell", "Version": "7.6.2.0" },
-        { "PackageIdentifier": "GitHub.cli", "Version": "2.88.0" },
-        { "PackageIdentifier": "Microsoft.AzureCLI", "Version": "2.84.0" },
-        { "PackageIdentifier": "GitHub.Copilot", "Version": "v0.0.409" },
-        { "PackageIdentifier": "astral-sh.uv", "Version": "0.10.10" },
-        { "PackageIdentifier": "junegunn.fzf", "Version": "0.67.0" },
-        { "PackageIdentifier": "Python.Python.3.12", "Version": "3.12.10" },
-        { "PackageIdentifier": "Canonical.Ubuntu.2404", "Version": "2404.1.31.0" },
-        { "PackageIdentifier": "Microsoft.WindowsTerminal", "Version": "1.24.11321.0" },
-        { "PackageIdentifier": "Microsoft.WSL", "Version": "2.6.3.0" },
-        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh", "Version": "29.14.0.0" },
-        { "PackageIdentifier": "Microsoft.DotNet.SDK.10", "Version": "10.0.108" }
+        {
+          "PackageIdentifier": "Git.Git",
+          "Version": "2.54.0"
+        },
+        {
+          "PackageIdentifier": "OpenJS.NodeJS.LTS",
+          "Version": "24.16.0"
+        },
+        {
+          "PackageIdentifier": "Microsoft.PowerShell",
+          "Version": "7.6.2.0"
+        },
+        {
+          "PackageIdentifier": "GitHub.cli",
+          "Version": "2.92.0"
+        },
+        {
+          "PackageIdentifier": "Microsoft.AzureCLI",
+          "Version": "2.86.0"
+        },
+        {
+          "PackageIdentifier": "GitHub.Copilot",
+          "Version": "v1.0.53"
+        },
+        {
+          "PackageIdentifier": "astral-sh.uv",
+          "Version": "0.11.15"
+        },
+        {
+          "PackageIdentifier": "junegunn.fzf",
+          "Version": "0.73.0"
+        },
+        {
+          "PackageIdentifier": "Python.Python.3.12",
+          "Version": "3.12.10"
+        },
+        {
+          "PackageIdentifier": "Canonical.Ubuntu.2404",
+          "Version": "2404.0.5.0"
+        },
+        {
+          "PackageIdentifier": "Microsoft.WindowsTerminal",
+          "Version": "1.24.11321.0"
+        },
+        {
+          "PackageIdentifier": "Microsoft.WSL",
+          "Version": "2.7.3"
+        },
+        {
+          "PackageIdentifier": "JanDeDobbeleer.OhMyPosh",
+          "Version": "29.14.0"
+        },
+        {
+          "PackageIdentifier": "Microsoft.DotNet.SDK.10",
+          "Version": "10.0.300"
+        }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
