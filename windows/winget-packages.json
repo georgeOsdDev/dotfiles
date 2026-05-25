@@ -1,23 +1,23 @@
 {
   "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-  "CreationDate": "2026-04-27T00:00:00.000-00:00",
+  "CreationDate": "2026-05-25T00:00:00.000-00:00",
   "Sources": [
     {
       "Packages": [
-        { "PackageIdentifier": "Git.Git" },
-        { "PackageIdentifier": "OpenJS.NodeJS.LTS" },
-        { "PackageIdentifier": "Microsoft.PowerShell" },
-        { "PackageIdentifier": "GitHub.cli" },
-        { "PackageIdentifier": "Microsoft.AzureCLI" },
-        { "PackageIdentifier": "GitHub.Copilot" },
-        { "PackageIdentifier": "astral-sh.uv" },
-        { "PackageIdentifier": "junegunn.fzf" },
-        { "PackageIdentifier": "Python.Python.3.12" },
-        { "PackageIdentifier": "Canonical.Ubuntu.2404" },
-        { "PackageIdentifier": "Microsoft.WindowsTerminal" },
-        { "PackageIdentifier": "Microsoft.WSL" },
-        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
-        { "PackageIdentifier": "Microsoft.DotNet.SDK.10" }
+        { "PackageIdentifier": "Git.Git", "Version": "2.53.0" },
+        { "PackageIdentifier": "OpenJS.NodeJS.LTS", "Version": "24.13.1" },
+        { "PackageIdentifier": "Microsoft.PowerShell", "Version": "7.6.2.0" },
+        { "PackageIdentifier": "GitHub.cli", "Version": "2.88.0" },
+        { "PackageIdentifier": "Microsoft.AzureCLI", "Version": "2.84.0" },
+        { "PackageIdentifier": "GitHub.Copilot", "Version": "v0.0.409" },
+        { "PackageIdentifier": "astral-sh.uv", "Version": "0.10.10" },
+        { "PackageIdentifier": "junegunn.fzf", "Version": "0.67.0" },
+        { "PackageIdentifier": "Python.Python.3.12", "Version": "3.12.10" },
+        { "PackageIdentifier": "Canonical.Ubuntu.2404", "Version": "2404.1.31.0" },
+        { "PackageIdentifier": "Microsoft.WindowsTerminal", "Version": "1.24.11321.0" },
+        { "PackageIdentifier": "Microsoft.WSL", "Version": "2.6.3.0" },
+        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh", "Version": "29.14.0.0" },
+        { "PackageIdentifier": "Microsoft.DotNet.SDK.10", "Version": "10.0.108" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
