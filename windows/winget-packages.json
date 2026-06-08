@@ -59,6 +59,10 @@
         {
           "PackageIdentifier": "Microsoft.DotNet.SDK.10",
           "Version": "10.0.300"
+        },
+        {
+          "PackageIdentifier": "Microsoft.Coreutils",
+          "Version": "2026.5.29"
         }
       ],
       "SourceDetails": {
