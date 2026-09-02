@@ -6,8 +6,8 @@ publish = false
 
 [dependencies]
 bat = "=0.26.1"
-cargo-binstall = "=1.19.1"
-eza = "=0.23.4"
-fd-find = "=10.4.2"
-ripgrep = "=15.1.0"
-starship = "=1.25.1"
+cargo-binstall = "=1.22.0"
+eza = "=0.23.5"
+fd-find = "=10.5.0"
+ripgrep = "=15.2.0"
+starship = "=1.26.0"
