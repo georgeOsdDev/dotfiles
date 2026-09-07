@@ -5,7 +5,7 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FAILED=()
-MISE_VERSION="2026.5.16"
+MISE_VERSION="2026.8.15"
 
 echo "=== dotfiles WSL bootstrap ==="
 echo "Dotfiles directory: $DOTFILES_DIR"
