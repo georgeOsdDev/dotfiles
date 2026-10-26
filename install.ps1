@@ -17,6 +17,22 @@ if (Test-Path $wingetJson) {
     Write-Warning "winget-packages.json not found at $wingetJson"
 }
 
+# --- Python (security-only branches no longer have winget installers) ---
+Write-Host ""
+Write-Host ">>> Setting up Python with uv..." -ForegroundColor Yellow
+$uv = (Get-Command uv -ErrorAction SilentlyContinue).Source
+if (-not $uv) {
+    $uv = Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Links\uv.exe"
+}
+foreach ($version in @("3.14.9", "3.12.15")) {
+    & $uv python install $version
+    if ($LASTEXITCODE -ne 0) { throw "Failed to install Python $version" }
+}
+& $uv python install 3.12.15 --default
+if ($LASTEXITCODE -ne 0) { throw "Failed to select Python 3.12.15" }
+& $uv python update-shell
+if ($LASTEXITCODE -ne 0) { throw "Failed to update the Python PATH" }
+
 # --- PowerShell modules ---
 Write-Host ""
 Write-Host ">>> Installing PowerShell modules..." -ForegroundColor Yellow

@@ -1,68 +1,64 @@
 {
   "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
-  "CreationDate": "2026-05-25T00:47:19.000-00:00",
+  "CreationDate": "2026-10-26T01:41:57.430Z",
   "Sources": [
     {
       "Packages": [
         {
           "PackageIdentifier": "Git.Git",
-          "Version": "2.54.0"
+          "Version": "2.56.0.3"
         },
         {
           "PackageIdentifier": "OpenJS.NodeJS.LTS",
-          "Version": "24.16.0"
+          "Version": "24.22.1"
         },
         {
           "PackageIdentifier": "Microsoft.PowerShell",
-          "Version": "7.6.2.0"
+          "Version": "7.6.9.0"
         },
         {
           "PackageIdentifier": "GitHub.cli",
-          "Version": "2.92.0"
+          "Version": "2.103.2"
         },
         {
           "PackageIdentifier": "Microsoft.AzureCLI",
-          "Version": "2.86.0"
+          "Version": "2.91.0"
         },
         {
           "PackageIdentifier": "GitHub.Copilot",
-          "Version": "v1.0.53"
+          "Version": "v1.0.103"
         },
         {
           "PackageIdentifier": "astral-sh.uv",
-          "Version": "0.11.15"
+          "Version": "0.13.5"
         },
         {
           "PackageIdentifier": "junegunn.fzf",
-          "Version": "0.73.0"
-        },
-        {
-          "PackageIdentifier": "Python.Python.3.12",
-          "Version": "3.12.10"
+          "Version": "0.74.5"
         },
         {
           "PackageIdentifier": "Canonical.Ubuntu.2404",
-          "Version": "2404.0.5.0"
+          "Version": "2404.1.31.0"
         },
         {
           "PackageIdentifier": "Microsoft.WindowsTerminal",
-          "Version": "1.24.11321.0"
+          "Version": "1.25.2733.0"
         },
         {
           "PackageIdentifier": "Microsoft.WSL",
-          "Version": "2.7.3"
+          "Version": "2.7.14.0"
         },
         {
           "PackageIdentifier": "JanDeDobbeleer.OhMyPosh",
-          "Version": "29.14.0"
+          "Version": "31.9.1.0"
         },
         {
           "PackageIdentifier": "Microsoft.DotNet.SDK.10",
-          "Version": "10.0.300"
+          "Version": "10.0.403"
         },
         {
           "PackageIdentifier": "Microsoft.Coreutils",
-          "Version": "2026.5.29"
+          "Version": "2026.9.3"
         }
       ],
       "SourceDetails": {
@@ -73,5 +69,5 @@
       }
     }
   ],
-  "WinGetVersion": "1.28.240"
+  "WinGetVersion": "1.29.380"
 }

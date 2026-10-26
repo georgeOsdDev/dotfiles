@@ -5,7 +5,7 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FAILED=()
-MISE_VERSION="2026.5.15"
+MISE_VERSION="2026.10.19"
 
 echo "=== dotfiles WSL bootstrap ==="
 echo "Dotfiles directory: $DOTFILES_DIR"
@@ -64,7 +64,7 @@ if command -v mise &>/dev/null || [ -f "$HOME/.local/bin/mise" ]; then
 fi
 if [ "$CURRENT_MISE_VERSION" != "$MISE_VERSION" ]; then
     echo "Installing mise $MISE_VERSION (current: ${CURRENT_MISE_VERSION:-none})..."
-    MISE_VERSION="v$MISE_VERSION" curl https://mise.run | sh
+    curl -fsSL https://mise.run | MISE_VERSION="v$MISE_VERSION" sh
 fi
 
 # Activate mise in current shell
@@ -81,26 +81,22 @@ mise install --yes
 # Re-activate to pick up newly installed tools
 eval "$(mise activate bash)" || true
 
+echo "Updating Python trust packages..."
+uv pip install --python "$(mise which python)" --upgrade "pip>=26.2.2" "certifi>=2026.10.19"
+
 # --- cargo tools ---
 echo ""
 echo ">>> Setting up cargo tools..."
 if command -v cargo &>/dev/null; then
-    # Install cargo-binstall first for faster installs
-    if ! command -v cargo-binstall &>/dev/null; then
-        echo "Installing cargo-binstall..."
-        cargo install cargo-binstall
-    fi
-
     # Read crates from Cargo.toml and install via binstall
     CARGO_TOML="$DOTFILES_DIR/wsl/cargo/Cargo.toml"
     if [ -f "$CARGO_TOML" ]; then
+        BINSTALL_VERSION="$(awk -F '"' '/^cargo-binstall[[:space:]]*=/{sub(/^=/, "", $2); print $2}' "$CARGO_TOML")"
+        echo "Installing cargo-binstall@$BINSTALL_VERSION..."
+        cargo install cargo-binstall --version "=$BINSTALL_VERSION" --locked
+
         echo "Installing cargo tools from Cargo.toml..."
-        # Parse [dependencies] section, strip '=' prefix from exact versions
-        awk '/^\[dependencies\]/{flag=1; next} /^\[/{flag=0} flag && /=/{
-            gsub(/[" ]/, ""); split($0, a, "=");
-            ver=a[2]; sub(/^=/, "", ver);
-            printf "%s@%s\n", a[1], ver
-        }' "$CARGO_TOML" | while read -r pkg; do
+        while read -r pkg; do
             crate="${pkg%%@*}"
             version="${pkg##*@}"
             if [ "$crate" = "cargo-binstall" ]; then
@@ -108,12 +104,16 @@ if command -v cargo &>/dev/null; then
             fi
             echo "  Installing $crate@$version..."
             if ! cargo binstall --no-confirm "$crate@$version" 2>/dev/null; then
-                if ! cargo install "$crate" --version "$version" 2>/dev/null; then
+                if ! cargo install "$crate" --version "=$version" --locked 2>/dev/null; then
                     echo "  WARN: Failed to install $crate@$version"
                     FAILED+=("cargo:$crate@$version")
                 fi
             fi
-        done
+        done < <(awk '/^\[dependencies\]/{flag=1; next} /^\[/{flag=0} flag && /=/{
+            gsub(/["[:space:]]/, ""); split($0, a, "=");
+            ver=$0; sub(/^[^=]*=/, "", ver); sub(/^=/, "", ver);
+            printf "%s@%s\n", a[1], ver
+        }' "$CARGO_TOML")
     fi
 else
     echo "WARN: cargo not found. Install rust via mise first, then re-run."
