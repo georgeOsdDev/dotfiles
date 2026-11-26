@@ -37,6 +37,15 @@
           "Version": "0.74.5"
         },
         {
+          "PackageIdentifier": "BurntSushi.ripgrep.MSVC"
+        },
+        {
+          "PackageIdentifier": "sharkdp.fd"
+        },
+        {
+          "PackageIdentifier": "sharkdp.bat"
+        },
+        {
           "PackageIdentifier": "Canonical.Ubuntu.2404",
           "Version": "2404.1.31.0"
         },

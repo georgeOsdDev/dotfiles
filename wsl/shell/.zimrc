@@ -31,7 +31,6 @@ zmodule git-info
 
 # Tool integrations
 zmodule fzf
-zmodule eza
 
 zmodule joke/zim-github-cli
 zmodule joke/zim-mise

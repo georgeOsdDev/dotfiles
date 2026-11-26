@@ -1,3 +1,6 @@
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+eval "$("$HOME/.local/bin/mise" activate zsh)"
+
 # Start configuration added by Zim Framework install {{{
 #
 # User configuration sourced by interactive shells
@@ -146,8 +149,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 eval "$(starship init zsh)"
-
-eval "$(~/.local/bin/mise activate zsh)"
 
 # fzf key bindings
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"

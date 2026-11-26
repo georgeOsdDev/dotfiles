@@ -9,6 +9,11 @@ case $- in
       *) return;;
 esac
 
+if [ -z "${BROWSER:-}" ] && [ -e /proc/sys/fs/binfmt_misc/WSLInterop ] &&
+    [ -x "$HOME/.local/bin/wsl-browser" ]; then
+    export BROWSER="$HOME/.local/bin/wsl-browser"
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -118,6 +123,7 @@ if ! shopt -oq posix; then
 fi
 
 # mise activation
+export PATH="$HOME/.cargo/bin:$PATH"
 if command -v mise &>/dev/null; then
     eval "$(mise activate bash)"
 elif [ -f "$HOME/.local/bin/mise" ]; then

@@ -1,0 +1,35 @@
+{
+  "alwaysShowNotificationIcon": true,
+  "copyFormatting": "none",
+  "copyOnSelect": true,
+  "actions": [
+    {
+      "command": { "action": "sendInput", "input": "\u001b\r" },
+      "id": "User.sendInput.8F63D3A9"
+    }
+  ],
+  "keybindings": [
+    { "id": "User.sendInput.8F63D3A9", "keys": "shift+enter" },
+    { "id": "Terminal.DuplicatePaneAuto", "keys": "alt+shift+d" },
+    { "id": "Terminal.CopyToClipboard", "keys": "ctrl+c" },
+    { "id": "Terminal.PasteFromClipboard", "keys": "ctrl+v" },
+    { "id": "Terminal.FindText", "keys": "ctrl+shift+f" }
+  ],
+  "newTabMenu": [{ "type": "remainingProfiles" }],
+  "profiles": {
+    "defaults": {
+      "font": { "face": "Hack Nerd Font" },
+      "opacity": 100
+    },
+    "list": [
+      {
+        "name": "Ubuntu-24.04",
+        "source": "Microsoft.WSL",
+        "colorScheme": "Campbell",
+        "font": { "face": "0xProto Nerd Font" }
+      }
+    ]
+  },
+  "showTabsInTitlebar": true,
+  "useAcrylicInTabRow": true
+}

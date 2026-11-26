@@ -2,6 +2,8 @@
 
 ## Repository Overview
 This is a cross-platform dotfiles repository managing software packages and configurations for Windows (winget) and WSL (mise, cargo, npm).
+For machine setup, follow [AGENTS.md](../AGENTS.md) and
+[setup/recovery](../windows/DEVBOX-SETUP.md) before changing the environment.
 
 ## Key Conventions
 
@@ -35,10 +37,12 @@ This is a cross-platform dotfiles repository managing software packages and conf
 - After version changes, ensure `install.sh` / `install.ps1` still work correctly.
 
 ### Bootstrap Scripts
-- `install.sh`: Links configs first (shell, git), then installs tools (mise → cargo → npm). Reports failures at the end.
-- `install.ps1`: Installs winget packages, PowerShell modules, then links profile.
+- `install.sh`: Runs as the normal Ubuntu 24.04 user, installs missing APT prerequisites, then links configs and installs mise → cargo → npm. Reports failures at the end.
+- `install.ps1`: Runs in PowerShell 7 from `~/dotfiles`, installs only missing winget packages and modules, then merges settings and adds a backed-up profile loader.
 - Both scripts are idempotent — safe to re-run.
+- Docker is optional and requires explicit approval for root-equivalent group access and automatic service startup.
+- Backups and package inventories stay outside Git. Recovery restores settings, not installed software.
 
 ### CI / Validation
-- `.github/workflows/validate.yml` runs on PRs to `main`: validates JSON, TOML syntax, and shell script syntax.
+- `.github/workflows/validate.yml` runs on PRs and pushes to `main`: validates JSON/TOML, shell/PowerShell syntax and focused recovery/browser/profile/terminal tests.
 - Keep the workflow passing for all changes.
