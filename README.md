@@ -13,30 +13,68 @@ Cross-platform dotfiles for Windows (winget) and WSL (mise, cargo, npm) environm
 | **PowerShell** | `windows/PowerShell/Microsoft.PowerShell_profile.ps1` | Manual |
 | **bash** | `wsl/shell/.bashrc`, `wsl/shell/.profile` | Manual |
 | **zsh + zim** | `wsl/shell/.zshrc`, `wsl/shell/.zimrc`, `wsl/shell/.zshenv` | Manual |
-| **git** | `wsl/git/.gitconfig` | Manual |
+| **git** | `windows/git/.gitconfig`, `wsl/git/.gitconfig` | Manual |
 
 ## Quick Start
 
+For AI-assisted setup, share this repository URL and ask the assistant to
+follow [AGENTS.md](AGENTS.md). It defines inspection, consent, execution,
+verification and recovery; passwords and authentication remain local.
+
 ### New Windows Machine
+
+Prerequisites: Windows with winget, Git and PowerShell 7. If Git or
+PowerShell 7 is missing, install only the missing prerequisite:
+
+```powershell
+winget install --id Git.Git --exact --no-upgrade
+winget install --id Microsoft.PowerShell --exact --no-upgrade
+```
+
+Then open a new **PowerShell 7** window so the installed commands are on PATH.
+Run the bootstrap without elevation; individual installers can request
+their own elevation. Install VS Code separately if it is not already present.
 
 ```powershell
 # 1. Clone this repo
 git clone https://github.com/georgeOsdDev/dotfiles.git ~/dotfiles
 
-# 2. Run bootstrap (requires admin for symlinks)
-~/dotfiles/install.ps1
+# 2. Run bootstrap with PowerShell 7
+pwsh -NoProfile -File "$HOME\dotfiles\install.ps1" -SkipTerminal
 ```
 
+See [Dev Box setup and recovery](windows/DEVBOX-SETUP.md) for the recorded
+plan, private backups, authentication, WSL setup and rollback.
+Existing applications are kept; stale winget versions are not forced.
+After initializing Ubuntu and opening Windows Terminal, rerun without
+`-SkipTerminal` to apply the managed fonts and terminal preferences.
+
 ### New WSL Environment
+
+Initialize Ubuntu 24.04 on WSL 2 first (see the setup document). Run as your
+normal Linux user, not root. The bootstrap installs missing APT prerequisites
+and requires sudo access and network access to the configured tool sources.
 
 ```bash
 # 1. Clone this repo
 git clone https://github.com/georgeOsdDev/dotfiles.git ~/dotfiles
 
 # 2. Run bootstrap
-chmod +x ~/dotfiles/install.sh
-~/dotfiles/install.sh
+bash ~/dotfiles/install.sh
 ```
+
+## Optional Docker for WSL Dev Containers
+
+For Docker Engine/Compose without Docker Desktop, see
+[WSL Docker setup and recovery](wsl/docker/README.md).
+This is an optional system-level setup, not a mise/cargo package.
+
+```bash
+bash ~/dotfiles/wsl/docker/install.sh
+```
+
+The `docker` group grants root-equivalent access inside Ubuntu. Review the
+documented privileges and backup/recovery steps before running.
 
 ## Adding Packages
 
@@ -60,7 +98,7 @@ newtool = "1.2.3"
 Edit `wsl/cargo/Cargo.toml`:
 ```toml
 [dependencies]
-new-crate = "1.0.0"
+new-crate = "=1.0.0"
 ```
 
 ### npm (WSL)

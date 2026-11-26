@@ -2,11 +2,19 @@
 # Managed by dotfiles - https://github.com/georgeOsdDev/dotfiles
 # NOTE: Credentials should be configured in ~/.gitconfig.local (not committed)
 
-[user]
-	name = georgeOsdDev
-
 [core]
 	longpaths = true
+
+[init]
+	defaultBranch = main
+
+[fetch]
+	prune = true
+
+[alias]
+	st = status --short --branch
+	lg = log --graph --decorate --oneline -20
+	un = restore --staged
 
 # Include local overrides (email, credentials, machine-specific settings)
 [include]

@@ -1,0 +1,17 @@
+{
+  "fonts": [
+    {
+      "face": "Hack Nerd Font",
+      "archiveUrl": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/Hack.zip",
+      "sha256": "fa24da7de7cefe7766614d27762570b20453c852fc1d5b657111666df9a5e449"
+    },
+    {
+      "face": "0xProto Nerd Font",
+      "archiveUrl": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/0xProto.zip",
+      "sha256": "8951412356611266734e2e9904173d437b804af1ffce4fe1804feef4fe9c8c3b"
+    }
+  ],
+  "defaultProfileName": "Ubuntu-24.04",
+  "themeName": "M365Princess",
+  "themeUrl": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/v33.4.0/themes/M365Princess.omp.json"
+}
