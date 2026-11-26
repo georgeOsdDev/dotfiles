@@ -6,7 +6,7 @@ publish = false
 
 [dependencies]
 bat = "=0.26.1"
-cargo-binstall = "=1.27.0"
+cargo-binstall = "=1.28.0"
 eza = "=0.23.5"
 fd-find = "=10.5.2"
 ripgrep = "=15.2.0"
