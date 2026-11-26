@@ -52,6 +52,10 @@ Backups stay under LocalAppData, outside OneDrive.
 When Python is installed, its user bin directory precedes WindowsApps in the
 user PATH so Store aliases do not intercept `python`. Machine PATH entries
 and existing system runtimes retain their precedence.
+Windows installs the exact Python pin from the repository's `mise.toml`
+alongside Python 3.12.15, which remains the Windows default. This avoids a
+second stale copy of the managed Python version in the installer. Existing
+Python installations are not uninstalled.
 
 PowerShell uses M365Princess with Hack Nerd Font. Ubuntu uses 0xProto Nerd
 Font and the Campbell color scheme, matching the previous PC's black
