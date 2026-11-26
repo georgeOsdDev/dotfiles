@@ -109,7 +109,11 @@ try {
     $env:Path = "$([Environment]::GetEnvironmentVariable('Path', 'Machine'));$userPath"
 
     if (-not $SkipPython) {
-        foreach ($version in @("3.14.9", "3.12.15")) {
+        $runtimeConfig = Get-Content -LiteralPath (Join-Path $PSScriptRoot "mise.toml") -Raw
+        $pythonPins = [regex]::Matches($runtimeConfig, '(?m)^python\s*=\s*"(?<version>\d+\.\d+\.\d+)"\s*$')
+        if ($pythonPins.Count -ne 1) { throw "Expected one exact Python version in mise.toml." }
+        $managedPythonVersion = $pythonPins[0].Groups["version"].Value
+        foreach ($version in @($managedPythonVersion, "3.12.15")) {
             Invoke-Checked uv @("python", "install", $version)
         }
         Invoke-Checked uv @("python", "install", "3.12.15", "--default")
