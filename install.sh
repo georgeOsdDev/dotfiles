@@ -14,7 +14,7 @@ if [ "$ID" != ubuntu ] || [ "$VERSION_ID" != 24.04 ]; then
     exit 1
 fi
 FAILED=()
-MISE_VERSION="2026.10.19"
+MISE_VERSION="2026.11.10"
 BACKUP_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/backups/$(date -u +%Y%m%dT%H%M%SZ)-$$"
 mkdir -p "$BACKUP_DIR"
 chmod 700 "$BACKUP_DIR"
